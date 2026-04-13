@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+  color: white;
+}
+
+/* BACKGROUND */
+#hearts {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* SCREEN */
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: linear-gradient(-45deg, #ff4b2b, #ff416c, #ff6a88, #ff99ac);
+  background-size: 400% 400%;
+  animation: bg 10s infinite;
+}
+
+.active {
+  display: flex;
+}
+
+@keyframes bg {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
+}
+
+h1, h2 {
+  text-align: center;
+  text-shadow: 0 0 20px pink;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+.btns {
+  display: flex;
+  gap: 20px;
+}

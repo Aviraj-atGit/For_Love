@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+
+<canvas id="hearts"></canvas>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b3c1f.mp3?filename=romantic-piano-110120.mp3">
+</audio>
+
+<!-- SCREEN 1 -->
+<section class="screen active" id="screen1">
+  <h1 id="typing"></h1>
+  <button onclick="nextScreen(1)">Start 💖</button>
+</section>
+
+<!-- SCREEN 2 -->
+<section class="screen" id="screen2">
+  <h2>The first time I saw you... 💫</h2>
+  <h2>Tu meri peace hai ❤️</h2>
+  <button onclick="nextScreen(2)">Next ❤️</button>
+</section>
+
+<!-- SCREEN 3 -->
+<section class="screen" id="screen3">
+  <h1>💌 For You</h1>
+  <p>Tu hasi toh life set 😭❤️</p>
+  <p>Tu gussa hoti hai toh bhi cute 😤❤️</p>
+  <p>Tu meri duniya hai 🥺</p>
+  <button onclick="nextScreen(3)">Next 💖</button>
+</section>
+
+<!-- SCREEN 4 -->
+<section class="screen" id="screen4">
+  <h1>I love you ❤️</h1>
+  <h2>Will you be mine forever? 💍</h2>
+
+  <div class="btns">
+    <button id="yesBtn">YES ❤️</button>
+    <button id="noBtn">NO 😒</button>
+  </div>
+</section>
+
+<!-- SCREEN 5 -->
+<section class="screen" id="screen5">
+  <h1>YAYYYY 😭❤️</h1>
+  <h2>Best decision ever 💍</h2>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
