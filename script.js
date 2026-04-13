@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* TYPING */
   const textEl = document.getElementById("typing");
-  const text = "Hey ❤️ I made this for you...";
+  const text = "Hey Shalu Chaudhary ❤️ I made this for you...";
   let i = 0;
 
   function typing() {
