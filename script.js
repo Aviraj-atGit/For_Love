@@ -13,7 +13,7 @@ let current = 0;
 
 // typing
 document.addEventListener("DOMContentLoaded", function () {
-  const text = "Hey ❤️ I made this for you...";
+  const text = "Hey, Shalu Chaudhary ❤️ I made this for you...";
   let i = 0;
   const el = document.getElementById("typing");
 
