@@ -1,116 +1,70 @@
-document.addEventListener("DOMContentLoaded", function () {
+const images = [
+  "images/img1.jpg",
+  "images/img2.jpg",
+  "images/img3.jpg",
+  "images/img4.jpg",
+  "images/img5.jpg",
+  "images/img6.jpg",
+  "images/img7.jpg",
+  "images/img8.jpg"
+];
 
-  /* TYPING */
-  const textEl = document.getElementById("typing");
-  const text = "Hey Shalu Chaudhary ❤️ I made this for you...";
+let current = 0;
+
+// typing
+document.addEventListener("DOMContentLoaded", function () {
+  const text = "Hey ❤️ I made this for you...";
   let i = 0;
+  const el = document.getElementById("typing");
 
   function typing() {
-    if (textEl && i < text.length) {
-      textEl.innerHTML += text.charAt(i);
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
       i++;
       setTimeout(typing, 50);
     }
   }
   typing();
 
-  /* YES BUTTON */
-  const yesBtn = document.getElementById("yesBtn");
-  if (yesBtn) {
-    yesBtn.addEventListener("click", function () {
-      nextScreen(4);
-      confetti();
-    });
-  }
-
-  /* NO BUTTON */
+  // 😈 NO BUTTON RUN
   const noBtn = document.getElementById("noBtn");
   if (noBtn) {
-    noBtn.addEventListener("mouseenter", function () {
+    noBtn.onmouseover = () => {
       noBtn.style.position = "absolute";
-      noBtn.style.top = Math.random() * window.innerHeight + "px";
-      noBtn.style.left = Math.random() * window.innerWidth + "px";
-    });
+      noBtn.style.top = Math.random() * 80 + "%";
+      noBtn.style.left = Math.random() * 80 + "%";
+    };
   }
-
 });
 
-
-/* SCREEN SWITCH */
-function nextScreen(current) {
-  const currentScreen = document.getElementById(`screen${current}`);
-  const nextScreen = document.getElementById(`screen${current + 1}`);
-
-  if (!currentScreen || !nextScreen) return;
-
-  currentScreen.classList.remove("active");
-  nextScreen.classList.add("active");
-
-  if (typeof gsap !== "undefined") {
-    gsap.from(nextScreen, { opacity: 0, scale: 0.8, duration: 1 });
-  }
-
-  const music = document.getElementById("music");
-  if (music) {
-    music.play().catch(() => {});
-  }
+// screen switch
+function nextScreen(n) {
+  document.getElementById("screen" + n).classList.remove("active");
+  document.getElementById("screen" + (n + 1)).classList.add("active");
 }
 
-
-/* CONFETTI */
-function confetti() {
-  for (let i = 0; i < 100; i++) {
-    let el = document.createElement("div");
-
-    el.style.position = "fixed";
-    el.style.width = "8px";
-    el.style.height = "8px";
-    el.style.background = "pink";
-
-    el.style.top = Math.random() * window.innerHeight + "px";
-    el.style.left = Math.random() * window.innerWidth + "px";
-
-    document.body.appendChild(el);
-
-    if (typeof gsap !== "undefined") {
-      gsap.to(el, { y: 500, duration: 2, onComplete: () => el.remove() });
-    } else {
-      setTimeout(() => el.remove(), 2000);
-    }
-  }
+// gallery
+function openGallery() {
+  document.getElementById("gallery").style.display = "flex";
+  current = 0;
+  showImage();
 }
 
+function closeGallery() {
+  document.getElementById("gallery").style.display = "none";
+}
 
-/* HEARTS */
-const canvas = document.getElementById("hearts");
-if (canvas) {
-  const ctx = canvas.getContext("2d");
+// slider
+function showImage() {
+  document.getElementById("sliderImage").src = images[current];
+}
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+function nextSlide() {
+  current = (current + 1) % images.length;
+  showImage();
+}
 
-  let hearts = Array.from({ length: 50 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 5,
-    speed: Math.random()
-  }));
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    hearts.forEach(h => {
-      ctx.beginPath();
-      ctx.arc(h.x, h.y, h.size, 0, Math.PI * 2);
-      ctx.fillStyle = "pink";
-      ctx.fill();
-
-      h.y -= h.speed;
-      if (h.y < 0) h.y = canvas.height;
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
+function prevSlide() {
+  current = (current - 1 + images.length) % images.length;
+  showImage();
 }

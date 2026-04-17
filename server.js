@@ -1,14 +1,8 @@
 const express = require("express");
 const app = express();
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
 
-app.use(express.static("public"));
+app.use(express.static(__dirname));
 
-io.on("connection", () => {
-  console.log("User connected ❤️");
-});
-
-http.listen(3000, () => {
-  console.log("Server running at http://localhost:3000");
+app.listen(3000, () => {
+  console.log("Running on http://localhost:3000");
 });
